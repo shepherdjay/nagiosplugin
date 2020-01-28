@@ -62,7 +62,7 @@ class Summary(object):
         for result in results:
             if result.state == Ok:
                 continue
-            msgs.append('{0}: {1}'.format(result.state, result))
+            msgs.append('{0}: {1}'.format(result.state.text, result))
         return msgs
 
     def empty(self):

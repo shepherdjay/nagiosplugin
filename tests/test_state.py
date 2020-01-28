@@ -5,11 +5,11 @@ from nagiosplugin.state import Ok, Warn, Unknown, Critical, worst
 
 class StateTest(unittest.TestCase):
 
-    def test_str(self):
-        self.assertEqual('ok', str(Ok))
+    def test_text(self):
+        self.assertEqual('ok', Ok.text)
 
-    def test_int(self):
-        self.assertEqual(3, int(Unknown))
+    def test_code(self):
+        self.assertEqual(3, Unknown.code)
 
     def test_cmp_less(self):
         self.assertTrue(Warn < Critical)

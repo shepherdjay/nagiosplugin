@@ -32,3 +32,5 @@ tests.xml
 tmp
 .todo
 .tox
+.venv
+.idea

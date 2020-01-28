@@ -164,6 +164,6 @@ class Check(object):
         Corresponds with :attr:`state`. Read-only property.
         """
         try:
-            return int(self.results.most_significant_state)
+            return self.results.most_significant_state.code
         except ValueError:
             return 3
