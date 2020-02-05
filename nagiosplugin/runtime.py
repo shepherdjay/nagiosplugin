@@ -65,7 +65,7 @@ class Runtime(object):
     timeout = None
     logchan = None
     output = None
-    stdout = sys.stdout
+    stdout = None
     exitcode = 70  # EX_SOFTWARE
 
     def __new__(cls):
@@ -129,7 +129,7 @@ class Runtime(object):
             with_timeout(self.timeout, self.run, check)
         else:
             self.run(check)
-        print('{0}'.format(self.output), end='')
+        print('{0}'.format(self.output), end='', file=self.stdout)
         self.sysexit()
 
     def sysexit(self):
