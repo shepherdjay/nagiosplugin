@@ -129,7 +129,7 @@ class Runtime(object):
             with_timeout(self.timeout, self.run, check)
         else:
             self.run(check)
-        print('{0}'.format(self.output), end='', file=self.stdout)
+        print('{0}'.format(self.output), end='')
         self.sysexit()
 
     def sysexit(self):
