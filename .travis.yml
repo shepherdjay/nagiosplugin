@@ -1,4 +1,5 @@
 language: python
+os: linux
 python:
   - '2.7'
   - '3.4'
@@ -6,11 +7,29 @@ python:
   - '3.6'
   - '3.7'
   - 'nightly'
-os:
-  - linux
+
+install: pip install tox-travis
+script: tox
+
 jobs:
   fast_finish: true
   allow_failures:
-    - python: 'nightly'
-install: pip install tox-travis
-script: tox
+    - os: linux
+      python: 'nightly'
+    - os: windows # Travis CI on Windows is Experimental and python not natively supported
+  include:
+    - name: 'Windows: Python 3.7.6 (Experimental)'
+      os: windows
+      language: shell
+      before_install:
+      - choco install python --version 3.7.6
+      - python --version
+      - python -m pip install --upgrade pip
+      - pip3 install --upgrade pytest
+      env:
+        - PATH=/c/Python37:/c/Python37/Scripts:$PATH
+        - TOXENV=py37
+      install:
+        - pip install tox
+      script:
+        - python -m tox
